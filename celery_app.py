@@ -7,9 +7,9 @@ from download import relatorio8, relatorio9, GerenciadorRelatorios
 from src.bigquery.helper import check_interval, get_connection, get_dates, format_date, treat_data, insert_data
 import os
 
-app = Celery('tasks', broker='redis://localhost:6379/0')
+app = Celery('tasks', broker='pyamqp://guest@localhost//')
 
-app.conf.result_backend = 'redis://localhost:6379/0'
+app.conf.result_backend = 'pyamqp://guest@localhost//'
 
 app.conf.timezone = 'UTC'
 
